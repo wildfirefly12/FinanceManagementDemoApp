@@ -20,11 +20,11 @@ namespace FinanceManagementDemoApp.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Category>>> GetCategories()
         {
-            List<Category> Categories = await _context.Categories
+            List<Category> categories = await _context.Categories
                 .AsNoTracking()
                 .ToListAsync();
 
-            return Categories;
+            return categories;
         }
 
         [HttpGet]
@@ -42,8 +42,8 @@ namespace FinanceManagementDemoApp.Controllers
         {
             string name = data["name"];
             string description = data["description"];
-            Category Category = new Category(name, description);
-            _context.Categories.Add(Category);
+            Category category = new Category(name, description);
+            _context.Categories.Add(category);
             return Ok(await _context.SaveChangesAsync());
         }
         
@@ -54,10 +54,10 @@ namespace FinanceManagementDemoApp.Controllers
             long id = long.Parse(data["id"]);
             string name = data["name"];
             string description = data["description"];
-            Category Category = await _context.Categories.FindAsync(id);
-            Category.Name = name;
-            Category.Description = description;
-            _context.Categories.Update(Category);
+            Category category = await _context.Categories.FindAsync(id);
+            category.Name = name;
+            category.Description = description;
+            _context.Categories.Update(category);
             
             return Ok(await _context.SaveChangesAsync());
         }
@@ -67,8 +67,8 @@ namespace FinanceManagementDemoApp.Controllers
         public async Task<IActionResult> DeleteCategory(long id)
         {
 
-            Category Category = await _context.Categories.FindAsync(id);
-            _context.Categories.Remove(Category);
+            Category category = await _context.Categories.FindAsync(id);
+            _context.Categories.Remove(category);
             
             return Ok(await _context.SaveChangesAsync());
         }
