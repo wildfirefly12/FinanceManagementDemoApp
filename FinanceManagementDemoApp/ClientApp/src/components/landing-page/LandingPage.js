@@ -1,15 +1,13 @@
 import React from "react";
+import AtAGlance from "./AtAGlance";
 
 const LandingPage = () => {
     
-    const getTodaysDate = () => {
-        let 
-    }
-    
+
     
     return(
         <div>
-            
+            <AtAGlance/>
         </div>
     )
 }

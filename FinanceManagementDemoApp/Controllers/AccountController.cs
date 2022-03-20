@@ -19,6 +19,7 @@ namespace FinanceManagementDemoApp.Controllers
         }
 
         [HttpGet]
+        [Route("Accounts")]
         public async Task<ActionResult<List<Account>>> GetAccounts()
         {
             List<Account> accounts = await _context.Accounts
@@ -43,7 +44,7 @@ namespace FinanceManagementDemoApp.Controllers
         {
             string name = data["name"];
             string description = data["description"];
-            Account account = new Account(name, description);
+            Account account = new Account(name, description, 0);
             _context.Accounts.Add(account);
             return Ok(await _context.SaveChangesAsync());
         }
@@ -73,5 +74,12 @@ namespace FinanceManagementDemoApp.Controllers
             
             return Ok(await _context.SaveChangesAsync());
         }
+
+        /*[HttpGet]
+        [Route("totalBalance")]
+        public async double getTotalAccountsBalance()
+        {
+            
+        }*/
     }
 }

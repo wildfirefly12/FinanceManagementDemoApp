@@ -5,6 +5,10 @@ namespace FinanceManagementDemoApp.Models
     public class Transaction
     {
 
+        public Transaction()
+        {
+            
+        }
         public Transaction(DateTime date, string description, double amount, Account account, Category category)
         {
             Date = date;
