@@ -3,7 +3,6 @@ import AtAGlance from "./AtAGlance";
 
 const LandingPage = () => {
     
-
     
     return(
         <div>

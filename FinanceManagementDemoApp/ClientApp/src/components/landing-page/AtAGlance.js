@@ -19,18 +19,19 @@ const AtAGlance = () => {
         }
     }
     
-    const [accounts, setAccounts] = useState();
+    const [accounts, setAccounts] = useState([]);
     
     useEffect(() => {
         axios.get('/api/Account/Accounts', config)
             .then(response => {
                 setAccounts(response.data);
+                console.log(accounts);
             })
     }, []);
     
     const [totalAmount, setTotalAmount] = useState(0)
     
-    const getTotalAmount = () => {
+    /*const getTotalAmount = () => {
         var total = totalAmount;
         
         for(var i; i < 3; i++){
@@ -38,7 +39,18 @@ const AtAGlance = () => {
         }
         
         setTotalAmount(total);
-    }
+    }*/
+
+    useEffect(() => {
+        let total = totalAmount;
+
+        for(let i; i < 3; i++){
+            console.log(accounts[i]);
+            total += accounts[i].balance;
+        }
+
+        setTotalAmount(total);
+    }, []);
     
     
     return (
