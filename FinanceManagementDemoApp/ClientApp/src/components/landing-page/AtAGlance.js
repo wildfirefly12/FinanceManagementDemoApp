@@ -6,8 +6,8 @@ const AtAGlance = () => {
     
     const getDate = () => {
         var date = new Date();
-        var day = date.getDay();
-        var month = date.getMonth();
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
         var year = date.getFullYear();
         
         return month + "/" + day + "/" + year;
@@ -29,7 +29,7 @@ const AtAGlance = () => {
             })
     }, []);
     
-    const [totalAmount, setTotalAmount] = useState(0)
+    const [totalAmount, setTotalAmount] = useState(0);
     
     /*const getTotalAmount = () => {
         var total = totalAmount;
