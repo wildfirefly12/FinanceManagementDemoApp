@@ -19,6 +19,7 @@ namespace FinanceManagementDemoApp.Controllers
         }
 
         [HttpGet]
+        [Route("Transactions")]
         public async Task<ActionResult<List<Transaction>>> GetTransactions()
         {
             List<Transaction> transactions = await _context.Transactions
@@ -44,11 +45,7 @@ namespace FinanceManagementDemoApp.Controllers
             DateTime date = DateTime.Parse(data["date"]);
             string description = data["description"];
             double amount = Double.Parse(data["amount"]);
-            long accountId = long.Parse(data["account"]);
-            Account account = _context.Accounts.FindAsync(accountId).Result;
-            long categoryId = long.Parse(data["category"]);
-            Category category = _context.Categories.FindAsync(categoryId).Result;
-            Transaction transaction = new Transaction(date, description, amount, account, category);
+            Transaction transaction = new Transaction(date, description, amount);
             _context.Transactions.Add(transaction);
             return Ok(await _context.SaveChangesAsync());
         }

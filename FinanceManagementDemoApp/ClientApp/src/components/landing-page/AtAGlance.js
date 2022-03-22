@@ -5,10 +5,10 @@ import axios from "axios";
 const AtAGlance = () => {
     
     const getDate = () => {
-        var date = new Date();
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
+        const date = new Date();
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
         
         return month + "/" + day + "/" + year;
     }
@@ -25,23 +25,22 @@ const AtAGlance = () => {
         axios.get('/api/Account/Accounts', config)
             .then(response => {
                 setAccounts(response.data);
-                console.log(accounts);
             })
     }, []);
     
     const [totalAmount, setTotalAmount] = useState(0);
     
-    /*const getTotalAmount = () => {
-        var total = totalAmount;
+    const getTotalAmount = () => {
+        let total = 0;
         
-        for(var i; i < 3; i++){
+        for(let i = 0; i < accounts.length; i++){
             total += accounts[i].balance;
         }
         
-        setTotalAmount(total);
-    }*/
+        return total;
+    }
 
-    useEffect(() => {
+/*    useEffect(() => {
         let total = totalAmount;
 
         for(let i; i < 3; i++){
@@ -50,13 +49,13 @@ const AtAGlance = () => {
         }
 
         setTotalAmount(total);
-    }, []);
+    }, []);*/
     
     
     return (
         <div>
             <h3>{getDate()}</h3>
-            <h3>{totalAmount}</h3>
+            <h3>{getTotalAmount()}</h3>
         </div>
     )
 }
