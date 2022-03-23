@@ -26,14 +26,12 @@ const Transaction = (props) => {
     }
     
     return (
-        <>
-            <div className={"transaction"}>
-                <p className={"transactionDescription"}>{props.description}</p>
-                <p className={"transactionDate"}>{formatDate(props.date)}</p>
-                <p className={"transactionAmount"}>{showCredit(props.amount)}</p>
-                <p className={"transactionAmount"}>{showDebit(props.amount)}</p>
-            </div>
-        </>
+        <div className={"transaction"}>
+            <p className={"transactionDescription"}>{props.description}</p>
+            <p className={"transactionDate"}>{formatDate(props.date)}</p>
+            <p className={"transactionAmount"}>{showCredit(props.amount)}</p>
+            <p className={"transactionAmount"}>{showDebit(props.amount)}</p>
+        </div>
     )
 }
 

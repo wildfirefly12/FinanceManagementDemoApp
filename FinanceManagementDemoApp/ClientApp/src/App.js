@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './custom.css'
-import Budget from "./components/budget/Budget";
+import Accounts from "./components/accounts/Accounts";
 
 export default class App extends Component {
   static displayName = App.name;
@@ -9,7 +9,7 @@ export default class App extends Component {
   render () {
     return (
         <div>
-          <Budget />
+          <Accounts />
         </div>
     );
   }

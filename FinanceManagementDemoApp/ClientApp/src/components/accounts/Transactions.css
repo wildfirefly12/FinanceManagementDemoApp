@@ -1,0 +1,34 @@
+﻿.transactions{
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #C3C3C3;
+}
+
+.transactionsHeader{
+    font-family: "Barlow", sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px 0 20px;
+}
+
+.descriptionHeader{
+    justify-self: start;
+    width: 50%;
+    padding-top: 2px;
+}
+
+.dateHeader{
+    width: 100px;
+    margin-left: 10px;
+    margin-right: 15px;
+}
+
+.amountHeader{
+    width: 50px;
+    margin-left: 10px;
+    margin-right: 15px;
+}

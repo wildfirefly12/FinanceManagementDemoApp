@@ -1,12 +1,13 @@
 .transaction{
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: space-between;
     font-family: "Barlow Semi Condensed", sans-serif;
     font-size: 1em;
     border-radius: 5px;
     margin: 5px;
     height: 30px;
+    padding-left: 10px;
 }
 
 .transaction:nth-child(even){

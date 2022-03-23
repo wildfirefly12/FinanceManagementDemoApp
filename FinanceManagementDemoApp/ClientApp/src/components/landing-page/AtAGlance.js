@@ -39,18 +39,6 @@ const AtAGlance = () => {
         
         return total;
     }
-
-/*    useEffect(() => {
-        let total = totalAmount;
-
-        for(let i; i < 3; i++){
-            console.log(accounts[i]);
-            total += accounts[i].balance;
-        }
-
-        setTotalAmount(total);
-    }, []);*/
-    
     
     return (
         <div>
