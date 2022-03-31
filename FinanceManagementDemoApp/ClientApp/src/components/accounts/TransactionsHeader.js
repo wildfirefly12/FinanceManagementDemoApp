@@ -30,7 +30,7 @@ const TransactionsHeader = () => {
                 <select>
                     <option>All Accounts</option>
                     {accounts.map(a => (
-                        <option>{accounts.name}</option>
+                        <option key={a.id}>{a.title}</option>
                     ))}
                 </select>
                 <select>

@@ -5,7 +5,7 @@ import TransactionsHeader from "./TransactionsHeader";
 
 const Budget = () => {
 
-
+    
     
     return(
         <div>

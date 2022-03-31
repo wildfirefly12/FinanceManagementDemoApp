@@ -5,15 +5,15 @@ namespace FinanceManagementDemoApp.Models
     public class Account
     {
 
-        public Account(string name, string description, double balance)
+        public Account(string title, string description, double balance)
         {
-            Name = name;
+            Title = title;
             Description = description;
             Balance = balance;
         }
         
         public long Id { get; set; }
-        public string Name { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
         public double Balance { get; set; }
         public ICollection<Transaction> Transactions { get; set; }

@@ -5,7 +5,6 @@ using FinanceManagementDemoApp.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.JSInterop;
 
 namespace FinanceManagementDemoApp.Controllers
 {
@@ -54,10 +53,10 @@ namespace FinanceManagementDemoApp.Controllers
         public async Task<IActionResult> EditAccount(IFormCollection data)
         {
             long id = long.Parse(data["id"]);
-            string name = data["name"];
+            string title = data["title"];
             string description = data["description"];
             Account account = await _context.Accounts.FindAsync(id);
-            account.Name = name;
+            account.Title = title;
             account.Description = description;
             _context.Accounts.Update(account);
             
