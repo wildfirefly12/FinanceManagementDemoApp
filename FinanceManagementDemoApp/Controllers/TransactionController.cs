@@ -28,6 +28,17 @@ namespace FinanceManagementDemoApp.Controllers
 
             return transactions;
         }
+        
+        [HttpGet]
+        [Route("AccountTransactions")]
+        public async Task<ActionResult<List<Transaction>>> GetAccountTransactions()
+        {
+            List<Transaction> transactions = await _context.Transactions
+                .AsNoTracking()
+                .ToListAsync();
+
+            return transactions;
+        }
 
         [HttpGet]
         [Route("Transaction")]
