@@ -1,7 +1,7 @@
 ﻿import React, {useEffect, useState} from "react";
 import axios from "axios";
 
-const TransactionsHeader = () => {
+const TransactionsHeader = (props) => {
 
     const config = {
         headers: {
@@ -19,6 +19,10 @@ const TransactionsHeader = () => {
             })
     }, []);
     
+    const handleChooseAccount = (event) => {
+        props.setAccountId(event.result);
+    }
+    
     return(
         <div>
             <form>
@@ -27,7 +31,7 @@ const TransactionsHeader = () => {
             </form>
             <h3></h3>
             <form>
-                <select>
+                <select onSelect={handleChooseAccount}>
                     <option>All Accounts</option>
                     {accounts.map(a => (
                         <option key={a.id}>{a.title}</option>

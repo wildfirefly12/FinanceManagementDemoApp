@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using FinanceManagementDemoApp.Data;
 using FinanceManagementDemoApp.Models;
@@ -31,10 +32,10 @@ namespace FinanceManagementDemoApp.Controllers
         
         [HttpGet]
         [Route("AccountTransactions")]
-        public async Task<ActionResult<List<Transaction>>> GetAccountTransactions()
+        public async Task<ActionResult<List<Transaction>>> GetAccountTransactions(long id)
         {
             List<Transaction> transactions = await _context.Transactions
-                .AsNoTracking()
+                .Where(t => t.AccountId == id)
                 .ToListAsync();
 
             return transactions;
