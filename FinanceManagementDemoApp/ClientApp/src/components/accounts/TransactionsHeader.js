@@ -15,12 +15,12 @@ const TransactionsHeader = (props) => {
         axios.get('/api/Account/Accounts', config)
             .then(response => {
                 setAccounts(response.data);
-                console.log(response.data);
             })
     }, []);
     
     const handleChooseAccount = (event) => {
-        props.setAccountId(event.result);
+        props.setAccountId(event.target.value);
+        console.log(event.target.value);
     }
     
     return(
@@ -29,16 +29,13 @@ const TransactionsHeader = (props) => {
                 <input type={"text"}/>
                 <button>Search</button>
             </form>
-            <h3></h3>
+            <h3>${props.total}</h3>
             <form>
-                <select onSelect={handleChooseAccount}>
-                    <option>All Accounts</option>
+                <select onChange={handleChooseAccount}>
+                    <option value={0}>All Accounts</option>
                     {accounts.map(a => (
-                        <option key={a.id}>{a.title}</option>
+                        <option key={a.id} value={a.id}>{a.title}</option>
                     ))}
-                </select>
-                <select>
-                    
                 </select>
             </form>
         </div>

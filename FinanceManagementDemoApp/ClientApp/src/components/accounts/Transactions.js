@@ -1,11 +1,9 @@
 ﻿import "./Transactions.css";
 
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Transaction from "./Transaction";
-import axios from "axios";
-import TransactionsHeader from "./TransactionsHeader";
 
-const Transactions = () => {
+const Transactions = (props) => {
     
     return (
         <div className={"transactions"}>

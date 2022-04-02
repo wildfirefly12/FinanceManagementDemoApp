@@ -21,21 +21,29 @@ const Budget = () => {
             })
     }, []);
     
-    const [filteredTransactions, setFilteredTransactions] = useState([]);
-    
-    const [accountId, setAccountId] = useState();
+    const [accountId, setAccountId] = useState(0);
     
     const showTransactions = (accountId) => {
-               
-        if(accountId == null){
-            return <Transactions transactions={transactions} />
+        if(accountId == 0){
+            return <Transactions transactions={transactions}/>
         }
-        return <Transactions transactions={filteredTransactions}/>
+        return <Transactions transactions={transactions.filter(t => t.accountId == accountId)}/>
+    }
+    
+    const addTransactions = () => {
+        var total = 0;
+        
+        for(var i = 0; i < transactions.length; i++){
+            total += transactions[i].amount;
+        }
+        total = Math.round(total * 100)/100;
+        return total;
     }
     
     return(
         <div>
-            <TransactionsHeader setAccountId={setAccountId}/>
+            <TransactionsHeader setAccountId={setAccountId} total={addTransactions()}/>
+            {showTransactions(accountId)}
         </div>
     )
 }

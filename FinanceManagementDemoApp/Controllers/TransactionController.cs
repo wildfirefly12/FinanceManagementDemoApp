@@ -30,6 +30,7 @@ namespace FinanceManagementDemoApp.Controllers
             return transactions;
         }
         
+        /*
         [HttpGet]
         [Route("AccountTransactions")]
         public async Task<ActionResult<List<Transaction>>> GetAccountTransactions(long id)
@@ -40,6 +41,8 @@ namespace FinanceManagementDemoApp.Controllers
 
             return transactions;
         }
+        */
+        
 
         [HttpGet]
         [Route("Transaction")]
