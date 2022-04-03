@@ -1,4 +1,6 @@
-﻿import React, {useEffect, useState} from "react";
+﻿import "./TransactionsHeader.css";
+
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 
 const TransactionsHeader = (props) => {
@@ -29,14 +31,11 @@ const TransactionsHeader = (props) => {
     }
     
     return(
-        <div>
-            <form onSubmit={handleSearch}>
-                <input type={"text"} onChange={handleSearch}/>
-                <button>Search</button>
-            </form>
-            <h3>${props.total}</h3>
+        <div className={"transactionsHeader"}>
+            <input className={"transactionSearch"} type={"text"} onChange={handleSearch}/>
+            <h3 className={"total"}>${props.total}</h3>
             <form>
-                <select onChange={handleChooseAccount}>
+                <select className={"transactionSearch"} onChange={handleChooseAccount}>
                     <option value={0}>All Accounts</option>
                     {accounts.map(a => (
                         <option key={a.id} value={a.id}>{a.title}</option>

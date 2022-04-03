@@ -1,11 +1,10 @@
 ﻿.transactions{
-    width: 90%;
     padding: 10px;
     margin: 10px;
     border: 1px solid #C3C3C3;
 }
 
-.transactionsHeader{
+.transactionHeader{
     font-family: "Barlow", sans-serif;
     font-size: 1.2em;
     font-weight: bold;

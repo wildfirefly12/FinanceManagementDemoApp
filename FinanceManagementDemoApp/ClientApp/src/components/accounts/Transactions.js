@@ -7,7 +7,7 @@ const Transactions = (props) => {
     
     return (
         <div className={"transactions"}>
-            <div className={"transactionsHeader"}>
+            <div className={"transactionHeader"}>
                 <p className={"descriptionHeader"}>Description</p>
                 <p className={"dateHeader"}>Date</p>
                 <p className={"amountHeader"}>Credit</p>

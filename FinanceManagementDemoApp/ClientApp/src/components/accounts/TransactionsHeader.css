@@ -1,11 +1,20 @@
 ﻿.transactionsHeader{
-    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px 0 20px;
 }
 
 .transactionSearch{
-    
+    justify-self: start;
+    width: 200px;
+    height: 30px;
+    border: 1px solid #C3C3C3;
+    border-radius: 5px;
 }
 
-.searchBtn{
-    
+.total{
+    font-family: "Barlow", sans-serif;
+    font-size: 2em;
+    font-weight: bold;
 }
