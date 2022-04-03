@@ -22,11 +22,16 @@ const TransactionsHeader = (props) => {
         props.setAccountId(event.target.value);
         console.log(event.target.value);
     }
+
+    const handleSearch = (event) => {
+        event.preventDefault();
+        props.setSearch(event.target.value);
+    }
     
     return(
         <div>
-            <form>
-                <input type={"text"}/>
+            <form onSubmit={handleSearch}>
+                <input type={"text"} onChange={handleSearch}/>
                 <button>Search</button>
             </form>
             <h3>${props.total}</h3>

@@ -23,11 +23,18 @@ const Budget = () => {
     
     const [accountId, setAccountId] = useState(0);
     
-    const showTransactions = (accountId) => {
-        if(accountId == 0){
-            return <Transactions transactions={transactions}/>
+    const showTransactions = (accountId, searchTerm) => {
+        console.log("method called");
+        let filteredTransactions = transactions.filter(t => t.accountId == accountId);
+        
+        if(search === ""){
+            if(accountId == 0){
+                return <Transactions transactions={transactions}/>
+            }
+            return <Transactions transactions={filteredTransactions}/>
         }
-        return <Transactions transactions={transactions.filter(t => t.accountId == accountId)}/>
+        console.log(filteredTransactions.filter(t => t.description.includes(searchTerm)));
+        return <Transactions transactions={filteredTransactions.filter(t => t.description.contains(searchTerm))}/>
     }
     
     const addTransactions = () => {
@@ -40,10 +47,12 @@ const Budget = () => {
         return total;
     }
     
+    const [search, setSearch] = useState("");
+    
     return(
         <div>
-            <TransactionsHeader setAccountId={setAccountId} total={addTransactions()}/>
-            {showTransactions(accountId)}
+            <TransactionsHeader setAccountId={setAccountId} total={addTransactions()} setSearch={setSearch}/>
+            {showTransactions(accountId, search)}
         </div>
     )
 }
