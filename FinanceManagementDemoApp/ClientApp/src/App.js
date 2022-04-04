@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import './custom.css'
-import Accounts from "./components/accounts/Accounts";
+import Home from "./components/home/Home";
+
 
 export default class App extends Component {
   static displayName = App.name;
@@ -9,7 +10,7 @@ export default class App extends Component {
   render () {
     return (
         <div>
-          <Accounts />
+          <Home />
         </div>
     );
   }
