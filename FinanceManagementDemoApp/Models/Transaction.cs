@@ -9,11 +9,12 @@ namespace FinanceManagementDemoApp.Models
         {
             
         }
-        public Transaction(DateTime date, string description, double amount)
+        public Transaction(DateTime date, string description, double amount, long accountId)
         {
             Date = date;
             Description = description;
             Amount = amount;
+            AccountId = accountId;
         }
         
         public long Id { get; set; }

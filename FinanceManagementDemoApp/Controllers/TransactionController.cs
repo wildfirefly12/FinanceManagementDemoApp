@@ -60,7 +60,8 @@ namespace FinanceManagementDemoApp.Controllers
             DateTime date = DateTime.Parse(data["date"]);
             string description = data["description"];
             double amount = Double.Parse(data["amount"]);
-            Transaction transaction = new Transaction(date, description, amount);
+            long accountId = long.Parse(data["accountId"]);
+            Transaction transaction = new Transaction(date, description, amount, accountId);
             _context.Transactions.Add(transaction);
             return Ok(await _context.SaveChangesAsync());
         }
