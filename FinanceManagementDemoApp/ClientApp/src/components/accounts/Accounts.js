@@ -4,9 +4,7 @@ import Transactions from "./Transactions";
 import TransactionsHeader from "./TransactionsHeader";
 import axios from "axios";
 
-const Budget = () => {
-
-
+const Accounts = (props) => {
     
     const [accountId, setAccountId] = useState(0);
     
@@ -24,24 +22,14 @@ const Budget = () => {
         return <Transactions transactions={filteredTransactions.filter(t => t.description.contains(searchTerm))}/>
     }
     
-    const addTransactions = () => {
-        var total = 0;
-        
-        for(var i = 0; i < props.transactions.length; i++){
-            total += props.transactions[i].amount;
-        }
-        total = Math.round(total * 100)/100;
-        return total;
-    }
-    
     const [search, setSearch] = useState("");
     
     return(
         <div>
-            <TransactionsHeader setAccountId={setAccountId} total={addTransactions()} setSearch={setSearch}/>
+            <TransactionsHeader accounts={props.accounts} setAccountId={setAccountId} accountId={accountId} setSearch={setSearch} displayBalance={props.displayBalance}/>
             {showTransactions(accountId, search)}
         </div>
     )
 }
 
-export default Budget;
+export default Accounts;

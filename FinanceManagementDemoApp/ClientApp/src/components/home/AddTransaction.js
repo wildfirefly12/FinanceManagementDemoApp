@@ -1,11 +1,8 @@
-import "./Transaction.css";
+import "./AddTransaction.css";
 import React, {useState} from "react";
 import axios from "axios";
-import DateAdapter from '@mui/lab/AdapterMoment';
 
-import {DatePicker, LocalizationProvider} from '@mui/lab';
-
-const Transaction = (props) => {
+const AddTransaction = (props) => {
     
     const [accountId, setAccountId] = useState();
     
@@ -55,6 +52,13 @@ const Transaction = (props) => {
             }).catch(function (error) {
                 console.log(error);
             });
+
+        await axios.post('/api/Account/UpdateBalance', formData, formConfig)
+            .then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
     })
 
     return(
@@ -79,4 +83,4 @@ const Transaction = (props) => {
     )
 }
 
-export default Transaction;
+export default AddTransaction;

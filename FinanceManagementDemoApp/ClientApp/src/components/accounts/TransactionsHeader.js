@@ -4,21 +4,6 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 
 const TransactionsHeader = (props) => {
-
-    const config = {
-        headers: {
-            'Content-Type': 'application/json-patch+json'
-        }
-    }
-
-    const [accounts, setAccounts] = useState([]);
-
-    useEffect(() => {
-        axios.get('/api/Account/Accounts', config)
-            .then(response => {
-                setAccounts(response.data);
-            })
-    }, []);
     
     const handleChooseAccount = (event) => {
         props.setAccountId(event.target.value);
@@ -33,11 +18,11 @@ const TransactionsHeader = (props) => {
     return(
         <div className={"transactionsHeader"}>
             <input className={"transactionSearch"} type={"text"} onChange={handleSearch}/>
-            <h3 className={"total"}>${props.total}</h3>
+            <h3 className={"total"}>${props.displayBalance(props.accounts, props.accountId)}</h3>
             <form>
                 <select className={"transactionSearch"} onChange={handleChooseAccount}>
                     <option value={0}>All Accounts</option>
-                    {accounts.map(a => (
+                    {props.accounts.map(a => (
                         <option key={a.id} value={a.id}>{a.title}</option>
                     ))}
                 </select>

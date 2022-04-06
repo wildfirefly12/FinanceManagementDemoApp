@@ -64,6 +64,19 @@ namespace FinanceManagementDemoApp.Controllers
         }
         
         [HttpPost]
+        [Route("UpdateBalance")]
+        public async Task<IActionResult> UpdateBalance(IFormCollection data)
+        {
+            long id = long.Parse(data["id"]);
+            double amount = double.Parse(data["amount"]);
+            Account account = await _context.Accounts.FindAsync(id);
+            account.Balance += amount;
+            _context.Accounts.Update(account);
+            
+            return Ok(await _context.SaveChangesAsync());
+        }
+        
+        [HttpPost]
         [Route("DeleteAccount")]
         public async Task<IActionResult> DeleteAccount(long id)
         {
