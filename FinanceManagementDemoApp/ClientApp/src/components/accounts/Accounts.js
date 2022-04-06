@@ -6,30 +6,17 @@ import axios from "axios";
 
 const Budget = () => {
 
-    const config = {
-        headers: {
-            'Content-Type': 'application/json-patch+json'
-        }
-    }
 
-    const [transactions, setTransactions] = useState([]);
-
-    useEffect(() => {
-        axios.get('/api/Transaction/Transactions', config)
-            .then(response => {
-                setTransactions(response.data);
-            })
-    }, []);
     
     const [accountId, setAccountId] = useState(0);
     
     const showTransactions = (accountId, searchTerm) => {
         console.log("method called");
-        let filteredTransactions = transactions.filter(t => t.accountId == accountId);
+        let filteredTransactions = props.transactions.filter(t => t.accountId == accountId);
         
         if(search === ""){
             if(accountId == 0){
-                return <Transactions transactions={transactions}/>
+                return <Transactions transactions={props.transactions}/>
             }
             return <Transactions transactions={filteredTransactions}/>
         }
@@ -40,8 +27,8 @@ const Budget = () => {
     const addTransactions = () => {
         var total = 0;
         
-        for(var i = 0; i < transactions.length; i++){
-            total += transactions[i].amount;
+        for(var i = 0; i < props.transactions.length; i++){
+            total += props.transactions[i].amount;
         }
         total = Math.round(total * 100)/100;
         return total;

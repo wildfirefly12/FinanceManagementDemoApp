@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using FinanceManagementDemoApp.Data;
@@ -57,7 +58,7 @@ namespace FinanceManagementDemoApp.Controllers
         [Route("CreateTransaction")]
         public async Task<IActionResult> CreateTransaction(IFormCollection data)
         {
-            DateTime date = DateTime.Parse(data["date"]);
+            DateTime date = DateTime.ParseExact(data["date"], "yyyy-MM-dd HH:mm:ss", CultureInfo.CurrentCulture);
             string description = data["description"];
             double amount = Double.Parse(data["amount"]);
             long accountId = long.Parse(data["accountId"]);

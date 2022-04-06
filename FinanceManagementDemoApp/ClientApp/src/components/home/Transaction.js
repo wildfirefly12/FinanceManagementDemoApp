@@ -16,14 +16,17 @@ const Transaction = (props) => {
     const [amount, setAmount] = useState();
     
     const handleChangeAmount = (event) => {
-      setAmount(event.target.value);
+        if(props.value == "debit"){
+            setAmount(-event.target.value);
+        } else {
+            setAmount(event.target.value);
+        }
     }
     
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState("");
     
     const handleChangeDate = (event) => {
-        event.preventDefault();
-        setDate(new Date(event.target.value));
+        setDate(event.target.value.concat(" 00:00:00"));
         console.log(date);
     }
     
@@ -34,11 +37,10 @@ const Transaction = (props) => {
     }
     
     const addTransaction = React.useCallback(async (event) => {
-        
         var formData = new FormData();
         formData.append("accountId", accountId);
         formData.append("amount", amount);
-        formData.append("date", date.toJSON());
+        formData.append("date", date);
         formData.append("description", description);
 
         const formConfig ={
