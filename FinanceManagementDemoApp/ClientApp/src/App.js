@@ -3,7 +3,6 @@ import React, {Component, useEffect, useState} from 'react';
 import './custom.css'
 import Home from "./components/home/Home";
 import axios from "axios";
-import NavBar from "./components/nav-bar/NavBar";
 
 const App = () => {
 
@@ -23,8 +22,7 @@ const App = () => {
     }, []);
 
     return (
-        <div style={{display: "flex", flexFlow: "row nowrap"}}>
-            <NavBar/>
+        <div>
             <Home transactions={transactions} />
         </div>
     )

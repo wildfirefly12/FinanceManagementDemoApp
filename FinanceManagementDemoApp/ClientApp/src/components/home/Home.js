@@ -1,29 +1,23 @@
 import React, {useEffect, useState} from "react";
-import Transaction from "./Transaction";
 import axios from "axios";
 import AtAGlance from "./AtAGlance";
+import AccountsOverview from "./AccountsOverview";
+import AddTransaction from "./AddTransaction";
 
 const Home = (props) => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json-patch+json'
-        }
-    }
-
-    const [accounts, setAccounts] = useState([]);
-
-    useEffect(() => {
-        axios.get('/api/Account/Accounts', config)
-            .then(response => {
-                setAccounts(response.data);
-            })
-    }, []);
     
     return (
         <div>
-            <AtAGlance transactions={props.transactions}/>
-            <Transaction type={"Add Expense"} accounts={accounts} value={"debit"}/>
-            <Transaction type={"Add Income"} accounts={accounts} value={"credit"}/>
+            <div>
+                <AtAGlance transactions={props.transactions} accounts={props.accounts} displayBalance={props.displayBalance}/>
+                <AddTransaction type={"Add Expense"} accounts={props.accounts} value={"debit"}/>
+                <AddTransaction type={"Add Income"} accounts={props.accounts} value={"credit"}/>
+            </div>
+            <div>
+                {props.accounts.map(a => (
+                    <AccountsOverview key={a.id} account={a}/>
+                ))}
+            </div>
         </div>
     )
 }
