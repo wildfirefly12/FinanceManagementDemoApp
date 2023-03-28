@@ -5,28 +5,38 @@ using System.Linq;
 using System.Threading.Tasks;
 using FinanceManagementDemoApp.Data;
 using FinanceManagementDemoApp.Models;
+using IdentityServer4.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinanceManagementDemoApp.Controllers
 {
-    public class TransactionController : BaseApiController
+    public class TransactionsController : BaseApiController
     {
-                private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public TransactionController(ApplicationDbContext context)
+        public TransactionsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        [Route("Transactions")]
-        public async Task<ActionResult<List<Transaction>>> GetTransactions()
+        public async Task<ActionResult<List<Transaction>>> GetTransactions(long id, string term)
         {
             List<Transaction> transactions = await _context.Transactions
                 .AsNoTracking()
                 .ToListAsync();
+            
+            if (id > 0)
+            {
+                transactions = transactions.Where(t => t.AccountId == id).ToList();
+            }
+
+            if (!term.IsNullOrEmpty())
+            {
+                transactions = transactions.Where(t => t.Description.Contains(term)).ToList();
+            }
 
             return transactions;
         }
