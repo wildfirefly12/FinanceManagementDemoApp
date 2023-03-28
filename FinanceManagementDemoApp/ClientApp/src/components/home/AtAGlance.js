@@ -10,7 +10,6 @@ const AtAGlance = (props) => {
     return (
         <div className={"atAGlance"}>
             <h3>{today}</h3>
-            <h3>{props.displayBalance(props.accounts, 0)}</h3>
         </div>
     )
 }

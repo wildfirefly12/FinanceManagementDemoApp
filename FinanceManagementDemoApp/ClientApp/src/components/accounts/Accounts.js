@@ -26,7 +26,7 @@ const Accounts = (props) => {
     
     return(
         <div>
-            <TransactionsHeader accounts={props.accounts} setAccountId={setAccountId} accountId={accountId} setSearch={setSearch} displayBalance={props.displayBalance}/>
+            <TransactionsHeader accounts={props.accounts} setAccountId={setAccountId} accountId={accountId} setSearch={setSearch}/>
             {showTransactions(accountId, search)}
         </div>
     )

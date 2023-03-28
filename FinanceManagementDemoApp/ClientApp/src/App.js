@@ -1,10 +1,15 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import './custom.css'
 import Home from "./components/home/Home";
+import Navbar from "./components/nav-bar/NavBar"
 import axios from "axios";
+import {Route} from "react-router-dom";
+import Accounts from "./components/accounts/Accounts";
 
 const App = () => {
+    
+    
 
     const config = {
         headers: {
@@ -21,9 +26,25 @@ const App = () => {
             })
     }, []);
 
+    const [accounts, setAccounts] = useState([]);
+
+    useEffect(() => {
+        axios.get('/api/Account/Accounts', config)
+            .then(response => {
+                setAccounts(response.data);
+            })
+    }, []);
+    
+
     return (
-        <div>
-            <Home transactions={transactions} />
+        <div style={{display: "flex", flexFlow: "row nowrap"}}>
+            <Navbar/>
+            <div style={{width: "100%"}}>
+                <Route exact path={"/"}><Home transactions={transactions} accounts={accounts}/></Route>
+                <Route path={"/budget"}></Route>
+                <Route path={"/accounts"}><Accounts transactions={transactions} accounts={accounts}/></Route>
+                <Route path={"/transactions"}></Route>
+            </div>
         </div>
     )
 }

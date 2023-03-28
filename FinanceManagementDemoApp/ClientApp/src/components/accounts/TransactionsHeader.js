@@ -18,7 +18,7 @@ const TransactionsHeader = (props) => {
     return(
         <div className={"transactionsHeader"}>
             <input className={"transactionSearch"} type={"text"} onChange={handleSearch}/>
-            <h3 className={"total"}>${props.displayBalance(props.accounts, props.accountId)}</h3>
+            <h3 className={"total"}>${}</h3>
             <form>
                 <select className={"transactionSearch"} onChange={handleChooseAccount}>
                     <option value={0}>All Accounts</option>

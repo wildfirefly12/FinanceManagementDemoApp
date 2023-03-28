@@ -4,7 +4,7 @@ import axios from "axios";
 
 const AddTransaction = (props) => {
     
-    const [accountId, setAccountId] = useState();
+    const [accountId, setAccountId] = useState(0);
     
     const handleChangeAccountId = (event) => {
       setAccountId(event.target.value);
@@ -66,7 +66,8 @@ const AddTransaction = (props) => {
             <h4>{props.type}</h4>
             <form onSubmit={addTransaction}>
                 <p>Account</p>
-                <select onChange={handleChangeAccountId}>
+                <select onChange={handleChangeAccountId} value={accountId}>
+                    <option key={0} value={0} disabled>Select an account</option>
                     {props.accounts.map(a => (
                     <option key={a.id} value={a.id}>{a.title}</option>
                     ))}

@@ -9,7 +9,8 @@
 }
 
 .navbar-container:hover{
-    padding-right: 10px
+    padding-right: 10px;
+    min-width: 200px;
 }
 
 .navbar-link{

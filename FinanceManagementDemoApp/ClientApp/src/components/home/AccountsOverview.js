@@ -1,16 +1,19 @@
+import "./AccountsOverview.css";
+
 import React from "react";
+import AccountCard from "./AccountCard";
+import HorizontalScroll from "react-horizontal-scrolling";
 
 const AccountsOverview = (props) => {
     
+    
+    
     return(
-        <div>
-            <div>
-                <h3>{props.account.title}</h3>
-            </div>
-            <div>
-                <h3>{props.account.balance}</h3>
-            </div>
-        </div>
+        <HorizontalScroll className={"accounts-overview-container"}>
+            {props.accounts.map((account, i) => 
+                <AccountCard index={i} title={account.title} balance={account.balance}/>
+            )}
+        </HorizontalScroll>
     )
 }
 

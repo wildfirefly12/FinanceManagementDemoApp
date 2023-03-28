@@ -1,0 +1,13 @@
+.home-container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.left-container{
+    width: 30%;
+}
+
+.right-container{
+    width: 70%;
+}

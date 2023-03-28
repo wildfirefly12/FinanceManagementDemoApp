@@ -63,6 +63,8 @@ namespace FinanceManagementDemoApp.Controllers
             double amount = Double.Parse(data["amount"]);
             long accountId = long.Parse(data["accountId"]);
             Transaction transaction = new Transaction(date, description, amount, accountId);
+            Account account = await _context.Accounts.FindAsync(accountId);
+            account.Balance += amount;
             _context.Transactions.Add(transaction);
             return Ok(await _context.SaveChangesAsync());
         }

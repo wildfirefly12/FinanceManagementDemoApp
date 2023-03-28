@@ -18,9 +18,9 @@ const NavBar = () => {
     return (
         <div className={"navbar-container"} onMouseEnter={handleSetHover} onMouseLeave={handleSetHover}>
             <Link className={"navbar-link"} to={"/"}><HomeRoundedIcon fontSize={"large"}/>{hover ? <p className={"navbar-link-text"}>Home</p> : ""}</Link>
-            <Link className={"navbar-link"} to={"/"}><RequestQuoteRoundedIcon fontSize={"large"}/>{hover ? <p className={"navbar-link-text"}>Budget</p> : ""}</Link>
-            <Link className={"navbar-link"} to={"/"}><AccountBalanceRoundedIcon fontSize={"large"}/>{hover ? <p className={"navbar-link-text"}>Accounts</p> : ""}</Link>
-            <Link className={"navbar-link"} to={"/"}><PaidRoundedIcon fontSize={"large"}/>{hover ? <p className={"navbar-link-text"}>???</p> : ""}</Link>
+            <Link className={"navbar-link"} to={"/budget"}><RequestQuoteRoundedIcon fontSize={"large"}/>{hover ? <p className={"navbar-link-text"}>Budget</p> : ""}</Link>
+            {/*<Link className={"navbar-link"} to={"/accounts"}><AccountBalanceRoundedIcon fontSize={"large"}/>{hover ? <p className={"navbar-link-text"}>Accounts</p> : ""}</Link>*/}
+            <Link className={"navbar-link"} to={"/transactions"}><PaidRoundedIcon fontSize={"large"}/>{hover ? <p className={"navbar-link-text"}>Transactions</p> : ""}</Link>
         </div>
     )
 }

@@ -1,0 +1,8 @@
+.accounts-overview-container{
+    border: 2px solid lightgray;
+    padding: 20px;
+    margin: 10px;
+/*    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;*/
+}
