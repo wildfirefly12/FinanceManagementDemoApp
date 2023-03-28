@@ -9,11 +9,15 @@ import Accounts from "./components/accounts/Accounts";
 
 const App = () => {
     
-    
-
     const config = {
         headers: {
             'Content-Type': 'application/json-patch+json'
+        }
+    }
+
+    const formConfig ={
+        headers: {
+            'Content-Type': 'multipart/form-data'
         }
     }
 
@@ -40,10 +44,10 @@ const App = () => {
         <div style={{display: "flex", flexFlow: "row nowrap"}}>
             <Navbar/>
             <div style={{width: "100%"}}>
-                <Route exact path={"/"}><Home transactions={transactions} accounts={accounts}/></Route>
+                <Route exact path={"/"}><Home transactions={transactions} accounts={accounts} formConfig={formConfig}/></Route>
                 <Route path={"/budget"}></Route>
                 <Route path={"/accounts"}><Accounts transactions={transactions} accounts={accounts}/></Route>
-                <Route path={"/transactions"}></Route>
+                <Route path={"/transactions"}><Accounts transactions={transactions} accounts={accounts}/></Route>
             </div>
         </div>
     )

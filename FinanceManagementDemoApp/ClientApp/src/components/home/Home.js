@@ -4,6 +4,7 @@ import React from "react";
 import AtAGlance from "./AtAGlance";
 import AccountsOverview from "./AccountsOverview";
 import AddTransaction from "./AddTransaction";
+import AddAccount from "./AddAccount";
 
 const Home = (props) => {
     
@@ -13,6 +14,7 @@ const Home = (props) => {
                 <AtAGlance transactions={props.transactions} accounts={props.accounts} />
                 <AddTransaction type={"Add Expense"} accounts={props.accounts} value={"debit"}/>
                 <AddTransaction type={"Add Income"} accounts={props.accounts} value={"credit"}/>
+                <AddAccount formConfig={props.formConfig}/>
             </div>
             <div className={"right-container"}>
                 <AccountsOverview accounts={props.accounts}/>

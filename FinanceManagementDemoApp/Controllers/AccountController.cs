@@ -43,7 +43,8 @@ namespace FinanceManagementDemoApp.Controllers
         {
             string name = data["name"];
             string description = data["description"];
-            Account account = new Account(name, description, 0);
+            double balance = double.Parse(data["balance"]);
+            Account account = new Account(name, description, balance);
             _context.Accounts.Add(account);
             return Ok(await _context.SaveChangesAsync());
         }
