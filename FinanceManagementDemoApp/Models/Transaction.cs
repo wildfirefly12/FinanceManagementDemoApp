@@ -9,12 +9,13 @@ namespace FinanceManagementDemoApp.Models
         {
             
         }
-        public Transaction(DateTime date, string description, double amount, long accountId)
+        public Transaction(DateTime date, string description, double amount, long accountId, long categoryId)
         {
             Date = date;
             Description = description;
             Amount = amount;
             AccountId = accountId;
+            CategoryId = categoryId;
         }
         
         public long Id { get; set; }
@@ -24,5 +25,7 @@ namespace FinanceManagementDemoApp.Models
         public double Amount { get; set; }
         public long AccountId { get; set; }
         public Account Account { get; set; }
+        public long CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }
