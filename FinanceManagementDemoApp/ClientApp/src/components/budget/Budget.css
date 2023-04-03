@@ -1,3 +1,15 @@
-.budget-container{
-    .min-width: 30%;
+.budget-container {
+    display: flex;
+    flex-flow: row wrap-reverse;
+    justify-content: space-between;
+}
+
+.add-container {
+    max-width: 28%;
+}
+
+.categories-container {
+    flex-grow: 1;
+    padding-right: 30px;
+    margin-left: 25px;
 }

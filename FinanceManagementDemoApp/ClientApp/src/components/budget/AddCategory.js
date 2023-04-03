@@ -27,7 +27,7 @@ const AddCategory = (props) => {
     }
     
     return (
-        <div className={"categoryForm"}>
+        <div className={"category-form"}>
             <p>Add Category</p>
             <FormControl sx={{margin: 2}}>
                 <TextField variant={"outlined"} placeholder={"Name"} label={"Name"} onChange={handleSetName} />

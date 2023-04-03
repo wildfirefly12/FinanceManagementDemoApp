@@ -1,11 +1,12 @@
-.categoryForm {
+.category-form {
     margin: 10px;
     padding: 15px;
     border: 1px solid #C3C3C3;
     display: flex;
     flex-flow: column nowrap;
+    width: 100%;
 }
 
-.categoryInput {
+.category-input {
     margin: 5px;
 }

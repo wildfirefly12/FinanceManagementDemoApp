@@ -104,5 +104,12 @@ namespace FinanceManagementDemoApp.Controllers
             
             return Ok(await _context.SaveChangesAsync());
         }
+
+        [HttpGet]
+        [Route("TotalByCategory")]
+        public async Task<ActionResult<double>> GetTotalByCategory(long catId)
+        {
+            return await _context.Transactions.Where(t => t.CategoryId == catId).Select(t => t.Amount).SumAsync();
+        }
     }
 }

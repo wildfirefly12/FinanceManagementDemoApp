@@ -72,5 +72,20 @@ namespace FinanceManagementDemoApp.Controllers
             
             return Ok(await _context.SaveChangesAsync());
         }
+
+        [HttpPost]
+        [Route("addExpense")]
+        public async Task<IActionResult> AddExpense(IFormCollection data)
+        {
+            long id = long.Parse(data["id"]);
+            double amount = double.Parse(data["amount"]);
+
+            Category category = await _context.Categories.FindAsync(id);
+
+            category.EstimatedTotal += amount;
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
     }
 }
