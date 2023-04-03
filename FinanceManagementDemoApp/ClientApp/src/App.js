@@ -6,6 +6,7 @@ import Navbar from "./components/nav-bar/NavBar"
 import axios from "axios";
 import {Route} from "react-router-dom";
 import Accounts from "./components/accounts/Accounts";
+import Budget from "./components/budget/Budget";
 
 const App = () => {
     
@@ -45,7 +46,7 @@ const App = () => {
             <Navbar/>
             <div style={{width: "100%"}}>
                 <Route exact path={"/"}><Home transactions={transactions} accounts={accounts} formConfig={formConfig}/></Route>
-                <Route path={"/budget"}></Route>
+                <Route path={"/budget"}><Budget config={config}/></Route>
                 <Route path={"/accounts"}><Accounts transactions={transactions} accounts={accounts}/></Route>
                 <Route path={"/transactions"}><Accounts transactions={transactions} accounts={accounts}/></Route>
             </div>
