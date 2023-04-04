@@ -25,7 +25,7 @@ const App = () => {
     const [transactions, setTransactions] = useState([]);
 
     useEffect(() => {
-        axios.get('/api/Transaction/Transactions', config)
+        axios.get('/api/Transactions/Transactions', config)
             .then(response => {
                 setTransactions(response.data);
             })
@@ -40,12 +40,21 @@ const App = () => {
             })
     }, []);
     
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        axios.get('/api/Category', config)
+            .then(response => {
+                setCategories(response.data);
+            })
+    }, []);
+    
 
     return (
         <div style={{display: "flex", flexFlow: "row nowrap"}}>
             <Navbar/>
             <div style={{width: "100%"}}>
-                <Route exact path={"/"}><Home transactions={transactions} accounts={accounts} formConfig={formConfig}/></Route>
+                <Route exact path={"/"}><Home transactions={transactions} accounts={accounts} categories={categories} formConfig={formConfig}/></Route>
                 <Route path={"/budget"}><Budget config={config}/></Route>
                 <Route path={"/accounts"}><Accounts transactions={transactions} accounts={accounts}/></Route>
                 <Route path={"/transactions"}><Accounts transactions={transactions} accounts={accounts}/></Route>

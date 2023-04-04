@@ -1,6 +1,7 @@
 import "./AddTransaction.css";
 import React, {useState} from "react";
 import axios from "axios";
+import {Button, FormControl, MenuItem, Select, TextareaAutosize, TextField} from "@mui/material";
 
 const AddTransaction = (props) => {
     
@@ -33,9 +34,16 @@ const AddTransaction = (props) => {
       setDescription(event.target.value);
     }
     
-    const addTransaction = React.useCallback(async (event) => {
+    const [categoryId, setCategoryId] = useState(0);
+    
+    const handleChangeCategoryId = (event) => {
+        setCategoryId(event.target.value);
+    }
+    
+    const addTransaction = async () => {
         var formData = new FormData();
-        formData.append("accountId", accountId);
+        formData.append("id", accountId);
+        formData.append("categoryId", categoryId);
         formData.append("amount", amount);
         formData.append("date", date);
         formData.append("description", description);
@@ -46,7 +54,7 @@ const AddTransaction = (props) => {
             }
         }
 
-        await axios.post('/api/Transaction/CreateTransaction', formData, formConfig)
+        await axios.post('/api/Transactions/CreateTransaction', formData, formConfig)
             .then(function (response) {
                 console.log(response);
             }).catch(function (error) {
@@ -59,26 +67,38 @@ const AddTransaction = (props) => {
             }).catch(function (error) {
                 console.log(error);
             });
-    })
+    }
 
     return(
         <div className={"transactionForm"}>
             <h4>{props.type}</h4>
             <form onSubmit={addTransaction}>
-                <p>Account</p>
-                <select onChange={handleChangeAccountId} value={accountId}>
-                    <option key={0} value={0} disabled>Select an account</option>
-                    {props.accounts.map(a => (
-                    <option key={a.id} value={a.id}>{a.title}</option>
-                    ))}
-                </select>
-                <p>Amount</p>
-                <input onChange={handleChangeAmount}/>
-                <p>Date</p>
-                <input type={"date"} onChange={handleChangeDate}/>
-                <p>Description</p>
-                <input onChange={handleChangeDescription}/>
-                <button type={"submit"}>Submit</button>
+                <FormControl>
+                    <Select sx={{margin: 2}} onChange={handleChangeAccountId} value={accountId} label={"Account"} size={"small"}>
+                        <MenuItem key={0} value={0} disabled>Select an account</MenuItem>
+                        {props.accounts.map(a => (
+                            <MenuItem key={a.id} value={a.id}>{a.title}</MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+                <FormControl>
+                    <Select sx={{margin: 2}} onChange={handleChangeCategoryId} value={categoryId} label={"Category"} size={"small"}>
+                        <MenuItem key={0} value={0} disabled>Select an category</MenuItem>
+                        {props.categories.map(c => (
+                            <MenuItem key={c.id} value={c.id}>{c.name}</MenuItem>
+                        ))} 
+                    </Select>
+                </FormControl>
+                <FormControl>
+                    <TextField sx={{margin: 2}} onChange={handleChangeAmount} variant={"outlined"} label={"Amount"} inputProps={{type: "number", step: ".01"}} size={"small"} />
+                </FormControl>
+                <FormControl>
+                    <TextField sx={{margin: 2}} onChange={handleChangeDate} variant={"outlined"} type={"date"} size={"small"} />
+                </FormControl>
+                <FormControl>
+                    <TextField sx={{margin: 2}} onChange={handleChangeDescription} variant={"outlined"} label={"Description"} multiline maxRows={3} size={"small"}/>
+                </FormControl>
+                <Button variant={"contained"} size={"small"} type={"submit"}>Submit</Button>
             </form>
         </div>
     )

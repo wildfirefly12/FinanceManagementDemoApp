@@ -46,7 +46,7 @@ const EstimatedExpense = (props) => {
         <div className={"estimated-expense-form"}>
             <p>Edit Estimated Expense</p>
             <FormControl sx={{margin: 2}}>
-                <TextField variant={"outlined"} placeholder={"Amount"} label={"Amount"} type={"number"} onChange={handleSetAmount} />
+                <TextField variant={"outlined"} placeholder={"Amount"} label={"Amount"}  inputProps={{type: "number", step: ".01"}} onChange={handleSetAmount} />
             </FormControl>
             <Select sx={{margin: 2}} onChange={handleSetCategoryId} value={categoryId}>
                 <MenuItem disabled value={0}>Select a category</MenuItem>

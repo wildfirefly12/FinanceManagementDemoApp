@@ -11,7 +11,7 @@ const AccountsOverview = (props) => {
     return(
         <HorizontalScroll className={"accounts-overview-container"}>
             {props.accounts.map((account, i) => 
-                <AccountCard index={i} title={account.title} balance={account.balance}/>
+                <AccountCard key={i} index={i} title={account.title} balance={account.balance}/>
             )}
         </HorizontalScroll>
     )
