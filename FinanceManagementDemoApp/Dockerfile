@@ -12,7 +12,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src
-COPY ["FinanceManagementDemoApp.csproj", "FinanceManagementDemoApp/"]
+COPY ["FinanceManagementDemoApp.csproj", ""]
 RUN dotnet restore "FinanceManagementDemoApp.csproj"
 COPY . .
 WORKDIR "/src"
