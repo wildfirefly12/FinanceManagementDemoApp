@@ -15,7 +15,7 @@ const Categories = (props) => {
             }).catch(error => {
                 console.log(error);
         })
-    }, [])
+    }, [props.updated])
     
     return (
         <div className={"categories"}>

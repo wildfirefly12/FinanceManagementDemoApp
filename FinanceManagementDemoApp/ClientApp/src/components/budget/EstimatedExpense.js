@@ -27,7 +27,7 @@ const EstimatedExpense = (props) => {
             }).catch(error => {
                 console.log(error);
         })
-    }, [])
+    }, [props.updated])
     
     const handleAddExpense = () => {
         const data = new FormData();
@@ -37,6 +37,7 @@ const EstimatedExpense = (props) => {
         axios.post("/api/Category/addExpense", data, props.formConfig)
             .then(response => {
                 console.log(response.data);
+                props.handleSetUpdated();
             }).catch(error => {
                 console.log(error);
         })
